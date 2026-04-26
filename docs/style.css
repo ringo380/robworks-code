@@ -987,6 +987,26 @@ code.inline {
    Portfolio extensions — services bullets, project subsections,
    writing empty-state. Reuse existing tokens only.
 ------------------------------------------------------------------- */
+header .byline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--muted);
+  margin: -0.25rem 0 1.25rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+header .byline::before {
+  content: "// ";
+  color: var(--accent-prompt);
+  font-weight: 600;
+}
+
+header .byline strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .card .bullets {
   list-style: none;
   margin: 0;

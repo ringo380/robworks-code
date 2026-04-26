@@ -51,15 +51,22 @@
     }
     h1 {
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      font-size: 78px; line-height: 0.98;
+      font-size: 88px; line-height: 0.95;
       letter-spacing: -0.035em; font-weight: 700;
-      margin: 0 0 18px; color: #ece9dd;
+      margin: 0 0 12px; color: #ece9dd;
     }
+    .byline {
+      font-size: 17px; color: #9b988b;
+      letter-spacing: 0.02em;
+      margin: 0 0 22px;
+    }
+    .byline::before { content: "// "; color: #a3c47e; }
+    .byline strong { color: #ece9dd; font-weight: 600; }
     .role {
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       font-size: 23px; color: #b3afa1;
       font-weight: 400; line-height: 1.35;
-      margin: 0 0 28px;
+      margin: 0 0 26px;
     }
     .stats {
       display: flex; gap: 26px;
@@ -136,8 +143,9 @@
   </div>
 
   <div class="lhs">
-    <h1>Ryan<br/>Robson</h1>
-    <p class="role">I build, ship, and maintain web apps, AI integrations, and developer tools — end-to-end, by one person.</p>
+    <h1>Robworks<br/>Code</h1>
+    <p class="byline">software development by <strong>Ryan Robson</strong> · Robworks Software LLC</p>
+    <p class="role">Product engineering, AI integrations, and developer tooling — built, shipped, and maintained end-to-end.</p>
     <div class="stats">
       <span><strong>10+</strong> years</span>
       <span class="sep">·</span>

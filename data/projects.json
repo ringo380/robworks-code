@@ -2,6 +2,14 @@
   "_comment": "Manually-curated 'other' projects shown in the Featured Projects section. Plugin entries are derived from the plugin marketplace at build time and rendered into the PROJECTS-PLUGINS sentinel. Append objects to `other` to add non-plugin projects (web apps, sites, tools).",
   "other": [
     {
+      "name": "ccmcp",
+      "category": "developer tools",
+      "description": "Dynamic CLI and TUI (Go) for managing Claude Code's MCP servers, plugins, and per-project overrides. One view across user config, local state, committed .mcp.json, plugin manifests, and OAuth integrations — bulk-toggle by scope or filter.",
+      "url": "https://ringo380.github.io/ccmcp/",
+      "source": "https://github.com/ringo380/ccmcp",
+      "tags": ["claude-code", "mcp", "go", "cli", "tui"]
+    },
+    {
       "name": "robworks-claude-code-plugins",
       "category": "marketplace",
       "description": "The Claude Code plugin marketplace catalog that powers this site's /plugins/ page. A single marketplace.json manifest pointing at three external plugin repos.",

@@ -1167,6 +1167,11 @@ h3.subsection-heading::before {
   overflow: hidden;
 }
 
+.form-turnstile {
+  margin-top: 0.25rem;
+  min-height: 65px;
+}
+
 .form-actions {
   display: flex;
   align-items: center;

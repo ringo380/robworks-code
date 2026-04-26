@@ -29,6 +29,7 @@
 
   <link rel="stylesheet" href="./style.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <script type="application/ld+json">
 {
@@ -392,6 +393,7 @@
               <label for="cf-website">website (leave blank)</label>
               <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off" />
             </div>
+            <div class="cf-turnstile form-turnstile" data-sitekey="0x4AAAAAADD5pA1eFNNWbjOh" data-theme="auto" data-size="flexible"></div>
             <div class="form-actions">
               <button type="submit" class="submit-btn">send message</button>
               <span class="form-status" role="status" aria-live="polite"></span>
@@ -448,6 +450,7 @@
       const statusEl = form.querySelector(".form-status");
       const errors = {
         validation: "Please fix the highlighted field and try again.",
+        challenge: "Please complete the verification challenge and try again.",
         rate_limit: "Too many submissions from this network. Try again in an hour.",
         upstream: "Couldn't deliver right now. Please try again in a few minutes.",
         json: "Something went wrong with the form. Reload and try again.",
@@ -458,16 +461,23 @@
         statusEl.textContent = "";
         statusEl.classList.remove("err", "ok");
 
+        const turnstileEl = form.querySelector('input[name="cf-turnstile-response"]');
         const data = {
           name: form.name.value.trim(),
           email: form.email.value.trim(),
           project_type: form.project_type.value,
           message: form.message.value.trim(),
           website: form.website.value, // honeypot — bots fill, humans don't
+          "cf-turnstile-response": turnstileEl ? turnstileEl.value : "",
         };
 
         if (!data.name || !data.email || !data.project_type || data.message.length < 10) {
           statusEl.textContent = "Fill in name, email, project type, and a message of at least 10 characters.";
+          statusEl.classList.add("err");
+          return;
+        }
+        if (!data["cf-turnstile-response"]) {
+          statusEl.textContent = "Please complete the verification challenge.";
           statusEl.classList.add("err");
           return;
         }
@@ -513,6 +523,10 @@
             statusEl.classList.add("err");
             submitBtn.textContent = originalLabel;
             submitBtn.disabled = false;
+            // Reset the Turnstile token so the user gets a fresh challenge on retry
+            if (window.turnstile && typeof window.turnstile.reset === "function") {
+              try { window.turnstile.reset(); } catch { /* ignore */ }
+            }
             announce(statusEl.textContent);
           }
         } catch {

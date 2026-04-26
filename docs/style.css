@@ -1080,6 +1080,162 @@ h3.subsection-heading::before {
 }
 
 /* ------------------------------------------------------------------
+   Contact form (lives inside .terminal shell so chrome matches the
+   rest of the site). Reuses surface/border/code-bg tokens.
+------------------------------------------------------------------- */
+.contact-form { margin-top: 1.5rem; }
+
+.contact-form .terminal-body {
+  gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+}
+
+.form-row label {
+  font-size: var(--fs-small);
+  color: var(--muted);
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+.form-row label::before {
+  content: "$ ";
+  color: var(--accent-prompt);
+  font-weight: 600;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.55rem 0.7rem;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  width: 100%;
+  transition: border-color 0.12s ease, background 0.12s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-row textarea {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  resize: vertical;
+  min-height: 7.5rem;
+}
+
+.form-row select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+                    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 4%, transparent);
+}
+
+.form-row input:invalid:not(:placeholder-shown),
+.form-row textarea:invalid:not(:placeholder-shown) {
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+}
+
+.form-hp {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.submit-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  text-transform: lowercase;
+  font-weight: 600;
+  transition: background 0.12s ease, border-color 0.12s ease, transform 0.05s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .submit-btn { color: var(--bg); }
+}
+
+.submit-btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-status {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.form-status.err {
+  color: var(--accent);
+}
+
+.form-status.ok {
+  color: var(--accent-prompt);
+}
+
+.contact-success .ok-mark {
+  color: var(--accent-prompt);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submit-btn,
+  .form-row input,
+  .form-row select,
+  .form-row textarea { transition: none; }
+}
+
+/* ------------------------------------------------------------------
    Footer
 ------------------------------------------------------------------- */
 footer {

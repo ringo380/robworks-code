@@ -133,21 +133,18 @@
         <span>remote, worldwide</span>
       </p>
 
-      <p class="hero-cta-label">get in touch</p>
-      <div class="terminal" aria-label="Contact and plugins entry points">
+      <p class="hero-cta-label">start a conversation</p>
+      <div class="terminal" aria-label="Primary site actions">
         <div class="terminal-chrome" aria-hidden="true">
           <span class="terminal-dots"><span></span><span></span><span></span></span>
           <span class="terminal-title">~/robworks $ zsh</span>
         </div>
         <div class="terminal-body">
           <div class="terminal-line">
-            <code class="terminal-cmd"><a href="mailto:ryan@robworks.info">contact ryan@robworks.info</a><span class="caret" aria-hidden="true">▊</span></code>
+            <code class="terminal-cmd"><a href="#contact">send-message --new</a><span class="caret" aria-hidden="true">▊</span></code>
           </div>
           <div class="terminal-line">
             <code class="terminal-cmd"><a href="/plugins/">cd ./plugins</a></code>
-          </div>
-          <div class="terminal-actions">
-            <button class="copy-btn" data-copy="ryan@robworks.info" aria-label="Copy email address">copy email</button>
           </div>
         </div>
       </div>
@@ -359,29 +356,48 @@
     <section id="contact" aria-labelledby="contact-heading">
       <div class="container prose">
         <h2 id="contact-heading"><span class="section-num" aria-hidden="true">[04]  # </span>contact</h2>
-        <p class="prose-prompt" aria-hidden="true"><span>$</span> cat contact.md</p>
-        <p>The fastest way to reach me is email. For new projects, a few sentences about what you're building and the problem you're trying to solve goes a long way.</p>
+        <p class="prose-prompt" aria-hidden="true"><span>$</span> ./send-message --new</p>
+        <p>Tell me what you're building, what problem you're solving, and roughly when you need it. I read every message and reply within 1 business day.</p>
 
-        <div class="terminal" aria-label="Contact channels">
+        <form id="contact-form" class="terminal contact-form" action="https://robworks-contact.ringo380.workers.dev/api/contact" method="POST" novalidate>
           <div class="terminal-chrome" aria-hidden="true">
             <span class="terminal-dots"><span></span><span></span><span></span></span>
-            <span class="terminal-title">~/robworks $ contact</span>
+            <span class="terminal-title">~/robworks $ message --compose</span>
           </div>
           <div class="terminal-body">
-            <div class="terminal-line">
-              <code class="terminal-cmd"><a href="mailto:ryan@robworks.info">email ryan@robworks.info</a></code>
+            <div class="form-row">
+              <label for="cf-name">name</label>
+              <input id="cf-name" name="name" type="text" required maxlength="120" autocomplete="name" />
             </div>
-            <div class="terminal-line">
-              <code class="terminal-cmd"><a href="https://github.com/ringo380">github @ringo380</a></code>
+            <div class="form-row">
+              <label for="cf-email">email</label>
+              <input id="cf-email" name="email" type="email" required maxlength="254" autocomplete="email" inputmode="email" />
             </div>
-            <div class="terminal-line">
-              <code class="terminal-cmd"><a href="https://robworks.info">web robworks.info</a></code>
+            <div class="form-row">
+              <label for="cf-project">project type</label>
+              <select id="cf-project" name="project_type" required>
+                <option value="" disabled selected>— select one —</option>
+                <option value="product-engineering">product engineering</option>
+                <option value="ai-integrations">ai integrations</option>
+                <option value="technical-consulting">technical consulting</option>
+                <option value="maintenance-retainers">maintenance &amp; retainers</option>
+                <option value="other">other / not sure</option>
+              </select>
             </div>
-            <div class="terminal-actions">
-              <button class="copy-btn" data-copy="ryan@robworks.info" aria-label="Copy email address">copy email</button>
+            <div class="form-row">
+              <label for="cf-message">message</label>
+              <textarea id="cf-message" name="message" required minlength="10" maxlength="4000" rows="6"></textarea>
+            </div>
+            <div class="form-hp" aria-hidden="true">
+              <label for="cf-website">website (leave blank)</label>
+              <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">send message</button>
+              <span class="form-status" role="status" aria-live="polite"></span>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   </main>
@@ -398,11 +414,11 @@
   </footer>
 
   <script type="module">
-    const status = document.getElementById("copy-status");
+    const announceEl = document.getElementById("copy-status");
     function announce(msg) {
-      if (!status) return;
-      status.textContent = "";
-      requestAnimationFrame(() => { status.textContent = msg; });
+      if (!announceEl) return;
+      announceEl.textContent = "";
+      requestAnimationFrame(() => { announceEl.textContent = msg; });
     }
     document.querySelectorAll(".copy-btn").forEach((btn) => {
       btn.addEventListener("click", async () => {
@@ -424,6 +440,90 @@
         }
       });
     });
+
+    // Contact form submit handler — POST JSON to the worker, swap form for confirmation on success.
+    const form = document.getElementById("contact-form");
+    if (form) {
+      const submitBtn = form.querySelector(".submit-btn");
+      const statusEl = form.querySelector(".form-status");
+      const errors = {
+        validation: "Please fix the highlighted field and try again.",
+        rate_limit: "Too many submissions from this network. Try again in an hour.",
+        upstream: "Couldn't deliver right now. Please try again in a few minutes.",
+        json: "Something went wrong with the form. Reload and try again.",
+        method: "Something went wrong with the form. Reload and try again.",
+      };
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.textContent = "";
+        statusEl.classList.remove("err", "ok");
+
+        const data = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          project_type: form.project_type.value,
+          message: form.message.value.trim(),
+          website: form.website.value, // honeypot — bots fill, humans don't
+        };
+
+        if (!data.name || !data.email || !data.project_type || data.message.length < 10) {
+          statusEl.textContent = "Fill in name, email, project type, and a message of at least 10 characters.";
+          statusEl.classList.add("err");
+          return;
+        }
+
+        submitBtn.disabled = true;
+        const originalLabel = submitBtn.textContent;
+        submitBtn.textContent = "sending…";
+        announce("Sending message");
+
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          let body = {};
+          try { body = await res.json(); } catch { /* non-JSON response */ }
+
+          if (res.ok && body.ok) {
+            const tpl = document.createElement("div");
+            tpl.className = "terminal contact-form contact-success";
+            tpl.setAttribute("aria-label", "Message sent confirmation");
+            tpl.innerHTML = `
+              <div class="terminal-chrome" aria-hidden="true">
+                <span class="terminal-dots"><span></span><span></span><span></span></span>
+                <span class="terminal-title">~/robworks $ message --sent</span>
+              </div>
+              <div class="terminal-body">
+                <div class="terminal-line is-output">
+                  <span class="output-arrow" aria-hidden="true">→</span>
+                  <code class="terminal-cmd"><span class="ok-mark">✓</span> message sent</code>
+                </div>
+                <div class="terminal-line is-output">
+                  <span class="output-arrow" aria-hidden="true">→</span>
+                  <code class="terminal-cmd">I'll reply within 1 business day.</code>
+                </div>
+              </div>`;
+            form.replaceWith(tpl);
+            announce("Message sent");
+          } else {
+            const code = body && body.error;
+            statusEl.textContent = errors[code] || "Something went wrong. Please try again.";
+            statusEl.classList.add("err");
+            submitBtn.textContent = originalLabel;
+            submitBtn.disabled = false;
+            announce(statusEl.textContent);
+          }
+        } catch {
+          statusEl.textContent = "Network error. Check your connection and try again.";
+          statusEl.classList.add("err");
+          submitBtn.textContent = originalLabel;
+          submitBtn.disabled = false;
+          announce(statusEl.textContent);
+        }
+      });
+    }
   </script>
 </body>
 </html>

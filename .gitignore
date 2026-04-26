@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Claude Code personal config (never commit)
+CLAUDE.md
+**/CLAUDE.md
+.claude/
+.claude.local.json
+memory/
+.browser-pilot/

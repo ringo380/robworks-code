@@ -1,0 +1,13 @@
+{
+  "_comment": "Manually-curated 'other' projects shown in the Featured Projects section. Plugin entries are derived from the plugin marketplace at build time and rendered into the PROJECTS-PLUGINS sentinel. Append objects to `other` to add non-plugin projects (web apps, sites, tools).",
+  "other": [
+    {
+      "name": "robworks-claude-code-plugins",
+      "category": "marketplace",
+      "description": "The Claude Code plugin marketplace catalog that powers this site's /plugins/ page. A single marketplace.json manifest pointing at three external plugin repos.",
+      "url": "/plugins/",
+      "source": "https://github.com/ringo380/robworks-claude-code-plugins",
+      "tags": ["claude-code", "marketplace", "plugins"]
+    }
+  ]
+}

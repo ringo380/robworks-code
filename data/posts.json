@@ -1,0 +1,4 @@
+{
+  "_comment": "Future blog/notes index. Append objects of shape { title, slug, date (YYYY-MM-DD), summary, url } to surface entries in the Writing section. The build script renders these into the POSTS sentinel; while empty, the SSR empty-state card stays in place.",
+  "posts": []
+}

@@ -1,0 +1,12 @@
+/* TEAM */
+Author: Ryan Robson
+Company: Robworks Software LLC
+Site: https://robworks.info
+Location: USA
+
+/* SITE */
+Title: Robworks Claude Code Plugins
+URL: https://code.robworks.info
+Source: https://github.com/ringo380/robworks-claude-code-plugins
+License: MIT
+Built with: Static HTML, no framework. Hosted on GitHub Pages.

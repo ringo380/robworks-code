@@ -2,23 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>OG Image</title>
+  <title>OG Image · Robworks Software LLC</title>
   <style>
     html, body { margin: 0; padding: 0; }
+    html { width: 1200px; height: 630px; }
     body {
-      width: 1200px;
-      background: #0c0c0a;
-      color: #ece9dd;
+      width: 1200px; height: 100%;
+      background: #0c0c0a; color: #ece9dd;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       -webkit-font-smoothing: antialiased;
       position: relative;
-      padding: 56px 80px 40px;
       box-sizing: border-box;
-      min-height: 630px;
     }
     .accent-bar {
       position: absolute; top: 0; left: 0; right: 0;
-      height: 6px; background: #e89452; z-index: 2;
+      height: 6px; background: #e89452; z-index: 3;
     }
     .grid-bg {
       position: absolute; inset: 0;
@@ -26,77 +24,145 @@
         linear-gradient(#1c1c1a 1px, transparent 1px),
         linear-gradient(90deg, #1c1c1a 1px, transparent 1px);
       background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse at 50% 0%, rgba(0, 0, 0, 0.7), transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, rgba(0, 0, 0, 0.7), transparent 75%);
+      mask-image: radial-gradient(ellipse at 30% 0%, rgba(0,0,0,0.65), transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 30% 0%, rgba(0,0,0,0.65), transparent 75%);
       pointer-events: none; z-index: 0;
     }
-    .content { position: relative; z-index: 1; }
-    .eyebrow {
-      font-size: 19px; color: #a3c47e; font-weight: 500;
-      margin: 0 0 16px; letter-spacing: 0.02em;
+
+    /* Top row: eyebrow + contact */
+    .top-row {
+      position: absolute;
+      top: 48px; left: 80px; right: 80px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 17px; color: #9b988b;
+      letter-spacing: 0.02em;
+      z-index: 2;
     }
-    .eyebrow::before { content: "// "; color: #a3c47e; }
+    .top-row .left::before { content: "// "; color: #a3c47e; }
+    .top-row .right { color: #e89452; font-weight: 600; }
+    .top-row .right::before { content: "$ "; color: #a3c47e; font-weight: 700; }
+
+    /* LHS: name, role, stats */
+    .lhs {
+      position: absolute;
+      top: 130px; left: 80px;
+      width: 600px;
+      z-index: 2;
+    }
     h1 {
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      font-size: 72px; line-height: 1.05; letter-spacing: -0.03em;
-      margin: 0; font-weight: 700; color: #ece9dd;
+      font-size: 78px; line-height: 0.98;
+      letter-spacing: -0.035em; font-weight: 700;
+      margin: 0 0 18px; color: #ece9dd;
     }
-    .tagline {
+    .role {
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      font-size: 24px; color: #b3afa1;
-      margin: 18px 0 36px; line-height: 1.4;
-      max-width: 1000px; font-weight: 400;
+      font-size: 23px; color: #b3afa1;
+      font-weight: 400; line-height: 1.35;
+      margin: 0 0 28px;
     }
-    .terminal {
-      background: #161614; border: 1px solid #3a3934;
-      border-radius: 10px; overflow: hidden;
-      margin: 36px 0 22px; max-width: 920px;
+    .stats {
+      display: flex; gap: 26px;
+      font-size: 17px; color: #9b988b;
+      letter-spacing: 0.02em;
     }
-    .terminal-chrome {
-      display: flex; align-items: center; gap: 14px;
-      padding: 10px 18px; background: #1c1c1a;
-      border-bottom: 1px solid #2c2b27;
+    .stats strong { color: #ece9dd; font-weight: 600; }
+    .stats .sep { color: #3a3934; }
+
+    /* RHS: services panel */
+    .services {
+      position: absolute;
+      top: 116px; right: 80px;
+      width: 410px;
+      background: #161614;
+      border: 1px solid #3a3934;
+      border-radius: 12px;
+      padding: 22px 24px;
+      box-shadow: 0 12px 32px -16px rgba(0,0,0,0.6);
+      box-sizing: border-box;
+      z-index: 2;
     }
-    .terminal-dots { display: inline-flex; gap: 7px; }
-    .terminal-dots span {
-      display: block; width: 11px; height: 11px;
-      border-radius: 999px; background: #3a3934;
-    }
-    .terminal-title { font-size: 14px; color: #9b988b; }
-    .terminal-body {
-      padding: 14px 22px; background: #1a1a18;
-      font-size: 19px; color: #ece9dd;
-      display: flex; align-items: baseline; gap: 12px;
-    }
-    .terminal-body::before { content: "$"; color: #a3c47e; font-weight: 600; }
-    .footer-row {
+    .services-head {
+      font-size: 13px; color: #a3c47e;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      font-weight: 600;
+      margin-bottom: 16px;
       display: flex; justify-content: space-between;
-      align-items: center; color: #b3afa1; font-size: 18px;
     }
-    .domain { color: #e89452; font-weight: 600; }
-    .domain::before { content: "// "; color: #a3c47e; }
+    .services-head .num { color: #9b988b; font-weight: 500; }
+    .services-list {
+      list-style: none; margin: 0; padding: 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .services-list li {
+      font-size: 19px; color: #ece9dd;
+      padding-left: 22px; position: relative;
+      line-height: 1.3;
+    }
+    .services-list li::before {
+      content: "›"; color: #e89452; font-weight: 700;
+      position: absolute; left: 0; top: 0;
+    }
+    .services-list li small {
+      display: block;
+      font-size: 13px; color: #9b988b;
+      font-weight: 400; letter-spacing: 0.01em;
+      margin-top: 2px;
+    }
+
+    /* Footer — anchored from top to dodge a Chrome headless quirk where
+       `bottom:` on a body sized to viewport doesn't render. */
+    .footer {
+      position: absolute;
+      left: 80px; right: 80px; top: 552px;
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 18px;
+      border-top: 1px dashed #2c2b27;
+      font-size: 16px; color: #9b988b;
+      z-index: 2;
+    }
+    .footer .domain { color: #e89452; font-weight: 600; }
+    .footer .domain::before { content: "// "; color: #a3c47e; font-weight: 700; }
   </style>
 </head>
 <body>
   <div class="accent-bar"></div>
   <div class="grid-bg"></div>
-  <div class="content">
-    <p class="eyebrow">independent software · robworks software llc</p>
-    <h1>Ryan Robson</h1>
-    <p class="tagline">Product engineering, AI integrations, technical consulting, and maintenance retainers — built and shipped by one person.</p>
-    <div class="terminal">
-      <div class="terminal-chrome">
-        <span class="terminal-dots"><span></span><span></span><span></span></span>
-        <span class="terminal-title">~/robworks $ zsh</span>
-      </div>
-      <div class="terminal-body">
-        contact ryan@robworks.info
-      </div>
+
+  <div class="top-row">
+    <span class="left">independent software · robworks software llc</span>
+    <span class="right">contact ryan@robworks.info</span>
+  </div>
+
+  <div class="lhs">
+    <h1>Ryan<br/>Robson</h1>
+    <p class="role">I build, ship, and maintain web apps, AI integrations, and developer tools — end-to-end, by one person.</p>
+    <div class="stats">
+      <span><strong>10+</strong> years</span>
+      <span class="sep">·</span>
+      <span><strong>3</strong> claude code plugins</span>
+      <span class="sep">·</span>
+      <span>remote</span>
     </div>
-    <div class="footer-row">
-      <span class="domain">code.robworks.info</span>
-      <span>Ryan Robson &amp; Robworks Software LLC</span>
+  </div>
+
+  <div class="services">
+    <div class="services-head">
+      <span>// services</span>
+      <span class="num">[04]</span>
     </div>
+    <ul class="services-list">
+      <li>product engineering<small>web apps, APIs, full-stack</small></li>
+      <li>ai integrations<small>claude api, mcp, agents</small></li>
+      <li>technical consulting<small>audits, architecture, perf</small></li>
+      <li>maintenance &amp; retainers<small>long-term support &amp; on-call</small></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <span class="domain">code.robworks.info</span>
+    <span>© 2026 Ryan Robson &amp; Robworks Software LLC</span>
   </div>
 </body>
 </html>

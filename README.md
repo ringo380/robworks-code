@@ -43,11 +43,15 @@ Don't hand-edit content inside the sentinels. To add a non-plugin project, appen
 
 ## OG images
 
+The portfolio OG image is generated from `scripts/og-image.html`. Render at a slightly taller viewport and crop — headless Chrome has a layout quirk where `position: absolute; bottom:` doesn't render when the body height equals the viewport exactly:
+
 ```bash
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --headless=new --hide-scrollbars --window-size=1200,630 \
-  --screenshot=docs/og-image.png \
+  --headless=new --hide-scrollbars --window-size=1200,700 \
+  --screenshot=/tmp/og-raw.png \
   file:///$(pwd)/scripts/og-image.html
+python3 -c "from PIL import Image; \
+  Image.open('/tmp/og-raw.png').crop((0,0,1200,630)).save('docs/og-image.png')"
 ```
 
 The plugins-page OG image lives at `docs/plugins/og-image.png` and was inherited from the original catalog repo.

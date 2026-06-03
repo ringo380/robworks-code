@@ -1,4 +1,12 @@
 {
   "_comment": "Future blog/notes index. Append objects of shape { title, slug, date (YYYY-MM-DD), summary, url } to surface entries in the Writing section. The build script renders these into the POSTS sentinel; while empty, the SSR empty-state card stays in place.",
-  "posts": []
+  "posts": [
+    {
+      "title": "Teaching ccmcp Which Claude Code It's Running Against",
+      "slug": "teaching-ccmcp-which-claude-code-its-running-against",
+      "date": "2026-06-02",
+      "summary": "Claude Code ships fast and quietly reshapes its own internals. My MCP manager used to bake those assumptions in as constants. v0.18.0 makes it detect the installed version and adapt — in one place.",
+      "url": "https://robworks.info/field-notes/teaching-ccmcp-which-claude-code-its-running-against"
+    }
+  ]
 }

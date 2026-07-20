@@ -60,6 +60,68 @@ function repoUrl(plugin) {
   return plugin.source?.repo ? `https://github.com/${plugin.source.repo}` : plugin.repository || "";
 }
 
+/**
+ * The catalog is not uniformly licensed, so every licensing claim on the page
+ * is derived from marketplace.json rather than written by hand. A plugin that
+ * is not open source has to say so before someone installs it, not after.
+ */
+function licenseId(plugin) {
+  return plugin.license || null;
+}
+
+function licenseUrl(plugin) {
+  const id = licenseId(plugin);
+  if (!id) return undefined;
+  if (id === "MIT") return "https://opensource.org/licenses/MIT";
+  return `https://spdx.org/licenses/${id}.html`;
+}
+
+/** Plugins whose license is anything other than MIT, in catalog order. */
+function nonMitPlugins(plugins) {
+  return plugins.filter((p) => licenseId(p) && licenseId(p) !== "MIT");
+}
+
+/** The prose answer to "are these plugins free?", generated from the catalog. */
+function licensingAnswer(plugins) {
+  const odd = nonMitPlugins(plugins);
+  const credentials =
+    "Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you.";
+  if (odd.length === 0) {
+    return `Yes. Every plugin is MIT-licensed and free to install and use. ${credentials}`;
+  }
+  const names = odd.map((p) => `${p.name} (${licenseId(p)})`).join(", ");
+  return (
+    `Free to install, and free to use as an individual — including for paid work. ` +
+    `Most plugins here are MIT-licensed. The exception is ${names}: source-available rather than open source, ` +
+    `free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license. ` +
+    `Check the license on each card before adopting one at work. ${credentials}`
+  );
+}
+
+/**
+ * Guard against the failure this function was written to fix: a blanket "every
+ * plugin is MIT" claim left behind in hand-written copy after a non-MIT plugin
+ * joined the catalog. Static prose outside the sentinels cannot be regenerated,
+ * so it is asserted instead.
+ */
+function assertNoBlanketMitClaim(html, plugins, label) {
+  if (nonMitPlugins(plugins).length === 0) return;
+  const offenders = [
+    /every plugin is mit/i,
+    /all plugins are mit/i,
+    /\bfree, mit-licensed\b/i,
+    /every plugin is[^.]{0,40}\bmit-licensed\b/i,
+  ].filter((re) => re.test(html));
+  if (offenders.length) {
+    throw new Error(
+      `${label}: the catalog contains a non-MIT plugin (${nonMitPlugins(plugins)
+        .map((p) => p.name)
+        .join(", ")}) but the page still claims every plugin is MIT — ` +
+        `matched ${offenders.map(String).join(", ")}`,
+    );
+  }
+}
+
 function operatingSystemFor(plugin) {
   const tags = Array.isArray(plugin.tags) ? plugin.tags.map((t) => t.toLowerCase()) : [];
   if (tags.includes("macos") && !tags.includes("linux") && !tags.includes("windows")) return "macOS";
@@ -103,6 +165,15 @@ function renderPluginCard(plugin) {
   lines.push(`                </div>`);
   lines.push(`              </div>`);
   lines.push(`            </div>`);
+  const lic = licenseId(plugin);
+  if (lic) {
+    const licUrl = licenseUrl(plugin);
+    const licInner = licUrl
+      ? `<a href="${escapeHtml(licUrl)}">${escapeHtml(lic)}</a>`
+      : escapeHtml(lic);
+    const oss = lic === "MIT" ? "" : ` <span class="license-note">source-available</span>`;
+    lines.push(`            <p class="license">license: ${licInner}${oss}</p>`);
+  }
   lines.push(`            <div class="card-footer">`);
   if (rl) {
     const verInner = ru
@@ -220,7 +291,7 @@ function renderPluginsJsonLd(plugins) {
       "operatingSystem": operatingSystemFor(p),
       "description": p.description || "",
       "softwareVersion": (p.source?.ref || "").replace(/^v/, "") || undefined,
-      "license": "https://opensource.org/licenses/MIT",
+      "license": licenseUrl(p),
       "url": repoUrl(p),
       "codeRepository": repoUrl(p),
       "downloadUrl": refUrl(p) || undefined,
@@ -318,8 +389,7 @@ function renderPluginsJsonLd(plugins) {
           "name": "Are these plugins free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text":
-              "Yes. Every plugin is MIT-licensed and free to install and use. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you.",
+            "text": licensingAnswer(plugins),
           },
         },
         {
@@ -412,6 +482,10 @@ async function main() {
   const jsonLd = renderPluginsJsonLd(plugins);
   const jsonLdBlock = `  <script type="application/ld+json">\n${jsonLd}\n  </script>`;
   pluginsHtml = replaceBetween(pluginsHtml, "<!-- BEGIN:JSONLD -->", "<!-- END:JSONLD -->", jsonLdBlock);
+  // The visible FAQ answer and the FAQPage JSON-LD answer are the same sentence,
+  // so they are generated from one source rather than kept in sync by hand.
+  const faqLicense = `          <p>${escapeHtml(licensingAnswer(plugins))}</p>`;
+  pluginsHtml = replaceBetween(pluginsHtml, "<!-- BEGIN:FAQ-LICENSE -->", "<!-- END:FAQ-LICENSE -->", faqLicense);
   // refresh hero count + plugin-count text in baked SSR (matches what runtime fetch would set)
   pluginsHtml = pluginsHtml.replace(
     /<strong id="hero-plugin-count">\d+<\/strong>/,
@@ -421,6 +495,7 @@ async function main() {
     /<p class="section-meta" id="plugin-count">\d+ plugins? available<\/p>/,
     `<p class="section-meta" id="plugin-count">${plugins.length} plugin${plugins.length === 1 ? "" : "s"} available</p>`
   );
+  assertNoBlanketMitClaim(pluginsHtml, plugins, "docs/plugins/index.html");
   fs.writeFileSync(PLUGINS_PATH, pluginsHtml);
   console.log(`✓ docs/plugins/index.html — ${plugins.length} plugin cards + JSON-LD`);
 

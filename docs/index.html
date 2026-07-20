@@ -135,7 +135,7 @@
       <p class="hero-stats">
         <span><strong>1</strong> developer</span>
         <span class="sep" aria-hidden="true"> · </span>
-        <span><strong id="hero-plugin-count">7</strong> plugins shipped</span>
+        <span><strong id="hero-plugin-count">11</strong> plugins shipped</span>
         <span class="sep" aria-hidden="true"> · </span>
         <span>10+ years building</span>
         <span class="sep" aria-hidden="true"> · </span>
@@ -352,15 +352,83 @@
               <h3>ableton</h3>
               <span class="badge">creative</span>
             </div>
-            <p class="description">Drive Ableton Live 11 from Claude Code — tracks, clips, MIDI notes, devices, mixer, automation, arrangement, scenes, transport, and preset generation (Wavetable, Simpler, rack macros &amp; zones, and macro→parameter mappings) over a bundled MCP server. Includes a guided /ableton:setup plus best-practice workflow commands for building and editing tracks.</p>
+            <p class="description">Drive Ableton Live 11 and 12 from Claude Code - tracks, clips, MIDI notes, devices, mixer, automation, arrangement, scenes, transport, and preset generation (Wavetable, Simpler, rack macros &amp; zones, and macro-&gt;parameter mappings) over a bundled MCP server. Includes a guided /ableton:setup, a /ableton:analyze best-practice set report, plus workflow commands for building and editing tracks.</p>
             <div class="tags">
               <span class="tag">mcp</span>
               <span class="tag">ableton</span>
               <span class="tag">ableton-live</span>
             </div>
             <div class="card-footer">
-              <span class="pinned">v0.4.0</span>
+              <span class="pinned">v0.34.0</span>
               <a class="repo-link" href="/plugins/#plugin-ableton">view →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3>notation</h3>
+              <span class="badge">productivity</span>
+            </div>
+            <p class="description">Capture session learnings into the right Claude Code memory tier. /notation:notate reads the session first - classifying type, gauging volume, and identifying exercised tiers - then right-sizes the flow and announces the chosen shape before running it. Proposals are presented as a scorecard header plus per-tier tables with diffs below. Pass &#39;full&#39; to force the complete flow. /notation:notate-all applies every proposal without the picker. Ships a notation-audit skill with the same structured reporting.</p>
+            <div class="tags">
+              <span class="tag">claude-md</span>
+              <span class="tag">memory</span>
+              <span class="tag">notes</span>
+            </div>
+            <div class="card-footer">
+              <span class="pinned">v0.4.1</span>
+              <a class="repo-link" href="/plugins/#plugin-notation">view →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3>deep-review</h3>
+              <span class="badge">developer-tools</span>
+            </div>
+            <p class="description">Multi-agent pull request review that surfaces every finding instead of hiding low-confidence ones. /deep-review:review scores each issue on confidence and severity, verifies impactful-but-uncertain ones, then presents a two-axis triage in-session and posts to the PR on confirm. /deep-review:auto double-checks then auto-applies a fix for every issue to the working tree, runs the repo&#39;s local gate to verify them, and confirms every fix survived the run. Works with or without a PR, tolerates a dirty tree without touching unrelated uncommitted work, and never assumes CI exists.</p>
+            <div class="tags">
+              <span class="tag">code-review</span>
+              <span class="tag">pull-request</span>
+              <span class="tag">github</span>
+            </div>
+            <div class="card-footer">
+              <span class="pinned">v0.3.1</span>
+              <a class="repo-link" href="/plugins/#plugin-deep-review">view →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3>colab</h3>
+              <span class="badge">developer-tools</span>
+            </div>
+            <p class="description">Drive Google Colab from Claude Code over a bundled MCP server — open Drive notebooks, run code in the kernel, manage multiple sessions, upload/download VM files, mount Drive, read Colab secrets, inspect variables, edit notebook cells, and run fine-tune round-trip + local MLX conversion helpers. Optional headless/Playwright backend. Includes guided /colab:setup and /colab:help commands.</p>
+            <div class="tags">
+              <span class="tag">mcp</span>
+              <span class="tag">colab</span>
+              <span class="tag">google-colab</span>
+            </div>
+            <div class="card-footer">
+              <span class="pinned">v1.3.0</span>
+              <a class="repo-link" href="/plugins/#plugin-colab">view →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3>sharding</h3>
+              <span class="badge">developer-tools</span>
+            </div>
+            <p class="description">Develop a product as isolated shards coupled only through a frozen, versioned contract, with drift caught mechanically. A Claude Code plugin plus a deterministic engine: SessionStart/PreToolUse/Stop hooks sandbox each shard to its own slice and a read-only contract, and /shard-* commands diff a shard&#39;s surface against the contract and gate phases.</p>
+            <div class="tags">
+              <span class="tag">claude-code</span>
+              <span class="tag">contract-first</span>
+              <span class="tag">isolation</span>
+            </div>
+            <div class="card-footer">
+              <span class="pinned">v0.0.5</span>
+              <a class="repo-link" href="/plugins/#plugin-sharding">view →</a>
             </div>
           </article>
 <!-- END:PROJECTS-PLUGINS -->

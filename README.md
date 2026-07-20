@@ -54,7 +54,18 @@ python3 -c "from PIL import Image; \
   Image.open('/tmp/og-raw.png').crop((0,0,1200,630)).save('docs/og-image.png')"
 ```
 
-The plugins-page OG image lives at `docs/plugins/og-image.png` and was inherited from the original catalog repo.
+The plugins-page OG image at `docs/plugins/og-image.png` is generated the same way from `scripts/og-image-plugins.html`:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --force-device-scale-factor=1 --window-size=1200,700 \
+  --screenshot=/tmp/og-plugins-raw.png \
+  file:///$(pwd)/scripts/og-image-plugins.html
+python3 -c "from PIL import Image; \
+  Image.open('/tmp/og-plugins-raw.png').crop((0,0,1200,630)).save('docs/plugins/og-image.png')"
+```
+
+It previously had no generator (it was inherited from the original catalog repo as a flat PNG), which is how its tagline kept asserting every plugin was MIT-licensed after that stopped being true. The card carries a licensing claim, so it needs to be rebuildable when the catalog's licensing changes.
 
 ## Hosting
 

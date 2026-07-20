@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>OG Image · Robworks Claude Code Plugins</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    html { width: 1200px; height: 630px; }
+    body {
+      width: 1200px; height: 100%;
+      background: #0c0c0a; color: #ece9dd;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .accent-bar {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 6px; background: #e89452; z-index: 3;
+    }
+    .grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(#1c1c1a 1px, transparent 1px),
+        linear-gradient(90deg, #1c1c1a 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at 30% 0%, rgba(0,0,0,0.65), transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 30% 0%, rgba(0,0,0,0.65), transparent 75%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .eyebrow {
+      position: absolute;
+      top: 37px; left: 80px;
+      font-size: 19px; color: #9b988b;
+      letter-spacing: 0.02em;
+      z-index: 2;
+    }
+    .eyebrow::before { content: "// "; color: #a3c47e; }
+
+    h1 {
+      position: absolute;
+      top: 96px; left: 80px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 59px; line-height: 1.0;
+      letter-spacing: -0.035em; font-weight: 700;
+      margin: 0; color: #ece9dd;
+      z-index: 2;
+    }
+
+    .tagline {
+      position: absolute;
+      top: 175px; left: 80px; right: 80px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 23px; color: #b3afa1;
+      font-weight: 400; line-height: 1.35;
+      margin: 0;
+      z-index: 2;
+    }
+
+    /* Terminal panel — the one-command install, which is the point of the page. */
+    .terminal {
+      position: absolute;
+      top: 240px; left: 80px; right: 200px;
+      background: #161614;
+      border: 1px solid #3a3934;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px -16px rgba(0,0,0,0.6);
+      z-index: 2;
+    }
+    .terminal-head {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 18px;
+      border-bottom: 1px solid #3a3934;
+      font-size: 15px; color: #9b988b;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #3a3934; }
+    .terminal-head .path { margin-left: 8px; }
+    .terminal-body { padding: 10px 18px; font-size: 19px; color: #ece9dd; }
+    .terminal-body .prompt { color: #a3c47e; font-weight: 700; }
+
+    /* Anchored from the top: headless Chrome drops `bottom:` when the body
+       height equals the viewport exactly (see README). */
+    .footer {
+      position: absolute;
+      left: 80px; right: 80px; top: 354px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 17px; color: #9b988b;
+      z-index: 2;
+    }
+    .footer .domain { color: #e89452; font-weight: 600; }
+    .footer .domain::before { content: "// "; color: #a3c47e; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+  <div class="grid-bg"></div>
+
+  <p class="eyebrow">claude code · plugin marketplace</p>
+  <h1>Robworks Claude Code Plugins</h1>
+  <p class="tagline">MCP servers and developer-workflow plugins — free for individual use, installable in one command.</p>
+
+  <div class="terminal">
+    <div class="terminal-head">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="path">~/robworks $ bash</span>
+    </div>
+    <div class="terminal-body">
+      <span class="prompt">$</span> claude plugin marketplace add ringo380/robworks-claude-code-plugins
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="domain">code.robworks.info</span>
+    <span>Ryan Robson &amp; Robworks Software LLC</span>
+  </div>
+</body>
+</html>

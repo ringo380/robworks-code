@@ -789,6 +789,41 @@ code.inline {
   margin-right: 0.05rem;
 }
 
+/* Per-plugin license. Sits directly above the footer because the catalog is
+   not uniformly licensed and a non-open-source plugin has to be legible
+   before the install command is copied, not after. */
+.card .license {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.card .license a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border-strong);
+}
+
+.card .license a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.card .license-note {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
 .card-footer {
   margin-top: auto;
   display: flex;

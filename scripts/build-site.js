@@ -8,7 +8,7 @@
  *   - docs/sitemap.xml lastmod fields
  *
  * Source of truth for plugins:
- *   https://raw.githubusercontent.com/ringo380/robworks-claude-code-plugins/main/.claude-plugin/marketplace.json
+ *   https://raw.githubusercontent.com/robworks-code/robworks-claude-code-plugins/main/.claude-plugin/marketplace.json
  *
  * Override with a local file path for offline builds:
  *   MARKETPLACE_JSON_PATH=../robworks-claude-code-plugins/.claude-plugin/marketplace.json node scripts/build-site.js
@@ -30,7 +30,7 @@ const POSTS_PATH = path.join(ROOT, "data", "posts.json");
 const MARKETPLACE_NAME = "robworks-claude-code-plugins";
 const SITE_URL = "https://code.robworks.info";
 const PLUGINS_URL = `${SITE_URL}/plugins`;
-const CATALOG_URL = "https://raw.githubusercontent.com/ringo380/robworks-claude-code-plugins/main/.claude-plugin/marketplace.json";
+const CATALOG_URL = "https://raw.githubusercontent.com/robworks-code/robworks-claude-code-plugins/main/.claude-plugin/marketplace.json";
 
 function escapeHtml(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({
@@ -372,7 +372,7 @@ function renderPluginsJsonLd(plugins) {
           "acceptedAnswer": {
             "@type": "Answer",
             "text":
-              "Run claude plugin marketplace add ringo380/robworks-claude-code-plugins once to register the catalog, then claude plugin install <name>@robworks-claude-code-plugins for any plugin above. Inside an interactive Claude Code session, the slash-command equivalents are /plugin marketplace add … and /plugin install ….",
+              "Run claude plugin marketplace add robworks-code/robworks-claude-code-plugins once to register the catalog, then claude plugin install <name>@robworks-claude-code-plugins for any plugin above. Inside an interactive Claude Code session, the slash-command equivalents are /plugin marketplace add … and /plugin install ….",
           },
         },
         {

@@ -7,6 +7,6 @@ Location: USA
 /* SITE */
 Title: Robworks Claude Code Plugins
 URL: https://code.robworks.info
-Source: https://github.com/ringo380/robworks-claude-code-plugins
+Source: https://github.com/robworks-code/robworks-claude-code-plugins
 License: MIT
 Built with: Static HTML, no framework. Hosted on GitHub Pages.

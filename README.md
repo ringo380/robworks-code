@@ -5,7 +5,7 @@ Source for [code.robworks.info](https://code.robworks.info) — Ryan Robson's po
 ## Pages
 
 - `/` — Portfolio: services, featured projects, writing, contact.
-- `/plugins/` — Claude Code plugin marketplace catalog (live-fetches [`marketplace.json`](https://github.com/ringo380/robworks-claude-code-plugins) at runtime).
+- `/plugins/` — Claude Code plugin marketplace catalog (live-fetches [`marketplace.json`](https://github.com/robworks-code/robworks-claude-code-plugins) at runtime).
 
 ## Dev
 

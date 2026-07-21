@@ -2,6 +2,13 @@
   "_comment": "Future blog/notes index. Append objects of shape { title, slug, date (YYYY-MM-DD), summary, url } to surface entries in the Writing section. The build script renders these into the POSTS sentinel; while empty, the SSR empty-state card stays in place.",
   "posts": [
     {
+      "title": "Why I Built Sharding",
+      "slug": "why-i-built-sharding",
+      "date": "2026-07-21",
+      "summary": "Two AI sessions agree on an interface, then one quietly drifts from it - and nobody notices until integration. Sharding makes the contract external and frozen, and catches the drift mechanically, the way a type checker catches an error.",
+      "url": "https://robworks.info/field-notes/why-i-built-sharding"
+    },
+    {
       "title": "Teaching ccmcp Which Claude Code It's Running Against",
       "slug": "teaching-ccmcp-which-claude-code-its-running-against",
       "date": "2026-06-02",

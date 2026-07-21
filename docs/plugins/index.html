@@ -501,7 +501,7 @@
           "name": "How do I install a plugin from this marketplace?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Run claude plugin marketplace add ringo380/robworks-claude-code-plugins once to register the catalog, then claude plugin install <name>@robworks-claude-code-plugins for any plugin above. Inside an interactive Claude Code session, the slash-command equivalents are /plugin marketplace add … and /plugin install …."
+            "text": "Run claude plugin marketplace add robworks-code/robworks-claude-code-plugins once to register the catalog, then claude plugin install <name>@robworks-claude-code-plugins for any plugin above. Inside an interactive Claude Code session, the slash-command equivalents are /plugin marketplace add … and /plugin install …."
           }
         },
         {
@@ -581,10 +581,10 @@
         </div>
         <div class="terminal-body">
           <div class="terminal-line">
-            <code class="terminal-cmd">claude plugin marketplace add ringo380/robworks-claude-code-plugins<span class="caret" aria-hidden="true">▊</span></code>
+            <code class="terminal-cmd">claude plugin marketplace add robworks-code/robworks-claude-code-plugins<span class="caret" aria-hidden="true">▊</span></code>
           </div>
           <div class="terminal-actions">
-            <button class="copy-btn" data-copy="claude plugin marketplace add ringo380/robworks-claude-code-plugins" aria-label="Copy marketplace install command">copy</button>
+            <button class="copy-btn" data-copy="claude plugin marketplace add robworks-code/robworks-claude-code-plugins" aria-label="Copy marketplace install command">copy</button>
           </div>
         </div>
       </div>
@@ -602,10 +602,10 @@
             <div class="terminal">
               <div class="terminal-body">
                 <div class="terminal-line">
-                  <code class="terminal-cmd">claude plugin marketplace add ringo380/robworks-claude-code-plugins</code>
+                  <code class="terminal-cmd">claude plugin marketplace add robworks-code/robworks-claude-code-plugins</code>
                 </div>
                 <div class="terminal-actions">
-                  <button class="copy-btn" data-copy="claude plugin marketplace add ringo380/robworks-claude-code-plugins" aria-label="Copy step 1 command">copy</button>
+                  <button class="copy-btn" data-copy="claude plugin marketplace add robworks-code/robworks-claude-code-plugins" aria-label="Copy step 1 command">copy</button>
                 </div>
               </div>
             </div>
@@ -1039,7 +1039,7 @@
         </details>
         <details>
           <summary><span class="faq-num" aria-hidden="true">02</span>How do I install a plugin from this marketplace?</summary>
-          <p>Run <code class="inline">claude plugin marketplace add ringo380/robworks-claude-code-plugins</code> once to register the catalog, then <code class="inline">claude plugin install &lt;name&gt;@robworks-claude-code-plugins</code> for any plugin above. Inside an interactive Claude Code session, the slash-command equivalents are <code class="inline">/plugin marketplace add …</code> and <code class="inline">/plugin install …</code>.</p>
+          <p>Run <code class="inline">claude plugin marketplace add robworks-code/robworks-claude-code-plugins</code> once to register the catalog, then <code class="inline">claude plugin install &lt;name&gt;@robworks-claude-code-plugins</code> for any plugin above. Inside an interactive Claude Code session, the slash-command equivalents are <code class="inline">/plugin marketplace add …</code> and <code class="inline">/plugin install …</code>.</p>
         </details>
         <details>
           <summary><span class="faq-num" aria-hidden="true">03</span>What is an MCP server?</summary>
@@ -1053,7 +1053,7 @@
         </details>
         <details>
           <summary><span class="faq-num" aria-hidden="true">05</span>Can I contribute a plugin?</summary>
-          <p>Yes — open an issue or PR at the <a href="https://github.com/ringo380/robworks-claude-code-plugins">source repository</a>. See <a href="https://github.com/ringo380/robworks-claude-code-plugins#contributing-a-plugin">Contributing a plugin</a> in the README for the criteria.</p>
+          <p>Yes — open an issue or PR at the <a href="https://github.com/robworks-code/robworks-claude-code-plugins">source repository</a>. See <a href="https://github.com/robworks-code/robworks-claude-code-plugins#contributing-a-plugin">Contributing a plugin</a> in the README for the criteria.</p>
         </details>
         <details>
           <summary><span class="faq-num" aria-hidden="true">06</span>How do I pin a plugin to a specific version?</summary>
@@ -1067,10 +1067,10 @@
         <h2 id="contribute-heading"><span class="section-num" aria-hidden="true">[05]  # </span>contribute</h2>
         <p>
           The marketplace catalog lives at
-          <a href="https://github.com/ringo380/robworks-claude-code-plugins">ringo380/robworks-claude-code-plugins</a>
+          <a href="https://github.com/robworks-code/robworks-claude-code-plugins">robworks-code/robworks-claude-code-plugins</a>
           on GitHub. Open an issue to propose a plugin, a PR to add one, or fork the repo to roll
           your own Claude Code marketplace — the whole catalog is a single
-          <a href="https://github.com/ringo380/robworks-claude-code-plugins/blob/main/.claude-plugin/marketplace.json"><code class="inline">marketplace.json</code></a>
+          <a href="https://github.com/robworks-code/robworks-claude-code-plugins/blob/main/.claude-plugin/marketplace.json"><code class="inline">marketplace.json</code></a>
           file.
         </p>
         <p>
@@ -1084,7 +1084,7 @@
     <div class="container footer-row">
       <span>© 2026 Ryan Robson &amp; <a href="https://robworks.info">Robworks Software LLC</a></span>
       <span class="footer-links">
-        <a href="https://github.com/ringo380/robworks-claude-code-plugins"><span aria-hidden="true">[</span>github<span aria-hidden="true">]</span></a>
+        <a href="https://github.com/robworks-code/robworks-claude-code-plugins"><span aria-hidden="true">[</span>github<span aria-hidden="true">]</span></a>
         <a href="/sitemap.xml"><span aria-hidden="true">[</span>sitemap<span aria-hidden="true">]</span></a>
         <a href="https://support.robworks.info/submit?product=marketplace"><span aria-hidden="true">[</span>support<span aria-hidden="true">]</span></a>
       </span>
@@ -1092,7 +1092,7 @@
   </footer>
 
   <script type="module">
-    const CATALOG_URL = "https://raw.githubusercontent.com/ringo380/robworks-claude-code-plugins/main/.claude-plugin/marketplace.json";
+    const CATALOG_URL = "https://raw.githubusercontent.com/robworks-code/robworks-claude-code-plugins/main/.claude-plugin/marketplace.json";
     const MARKETPLACE_NAME = "robworks-claude-code-plugins";
 
     const escapeHtml = (s) =>

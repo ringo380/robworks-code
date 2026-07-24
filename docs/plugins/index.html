@@ -1187,9 +1187,15 @@
             ? "https://opensource.org/licenses/MIT"
             : `https://spdx.org/licenses/${encodeURIComponent(lic)}.html`)
         : null;
+      // Only genuinely restricted licenses carry the badge. Tagging everything
+      // that is not MIT as source-available mislabelled Apache-2.0, which is
+      // OSI open source and carries no commercial-use restriction. Unknown
+      // licenses fall to the cautious side rather than the permissive one.
+      const openSource = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause",
+        "ISC", "MPL-2.0", "GPL-3.0", "GPL-2.0", "LGPL-3.0", "AGPL-3.0"];
       const licenseLine = lic
         ? `<p class="license">license: <a href="${escapeHtml(licUrl)}">${escapeHtml(lic)}</a>${
-            lic === "MIT" ? "" : ` <span class="license-note">source-available</span>`
+            openSource.includes(lic) ? "" : ` <span class="license-note">source-available</span>`
           }</p>`
         : "";
 

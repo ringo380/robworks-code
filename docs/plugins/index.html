@@ -106,7 +106,7 @@
       "@type": "ItemList",
       "@id": "https://code.robworks.info/plugins/#plugins",
       "name": "Claude Code plugins by Robworks Software LLC",
-      "numberOfItems": 11,
+      "numberOfItems": 12,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -194,6 +194,14 @@
           "url": "https://code.robworks.info/plugins/#plugin-sharding",
           "item": {
             "@id": "https://code.robworks.info/plugins/#sw-sharding"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "url": "https://code.robworks.info/plugins/#plugin-audacity",
+          "item": {
+            "@id": "https://code.robworks.info/plugins/#sw-audacity"
           }
         }
       ]
@@ -388,11 +396,11 @@
       "applicationSubCategory": "Claude Code plugin",
       "operatingSystem": "macOS, Linux, Windows",
       "description": "Capture session learnings into the right Claude Code memory tier. /notation:notate reads the session first - classifying type, gauging volume, and identifying exercised tiers - then right-sizes the flow and announces the chosen shape before running it. Proposals are presented as a scorecard header plus per-tier tables with diffs below. Pass 'full' to force the complete flow. /notation:notate-all applies every proposal without the picker. /notation:feedback sends a bug, idea, or routing correction to the maintainer as a support ticket. Notation is additive: it preserves existing lines and dates new entries rather than overwriting history. Ships a notation-audit skill with the same structured reporting.",
-      "softwareVersion": "0.6.0",
+      "softwareVersion": "0.6.1",
       "license": "https://opensource.org/licenses/MIT",
       "url": "https://github.com/Robworks-Code/notation",
       "codeRepository": "https://github.com/Robworks-Code/notation",
-      "downloadUrl": "https://github.com/Robworks-Code/notation/releases/tag/v0.6.0",
+      "downloadUrl": "https://github.com/Robworks-Code/notation/releases/tag/v0.6.1",
       "keywords": "claude-md, memory, notes, documentation, productivity, context-management, claude-code, plugin",
       "author": {
         "@id": "https://robworks.info/#org"
@@ -466,12 +474,38 @@
       "applicationSubCategory": "Claude Code plugin",
       "operatingSystem": "macOS, Linux, Windows",
       "description": "Develop a product as isolated shards coupled only through a frozen, versioned contract, with drift caught mechanically. A Claude Code plugin plus a deterministic engine: SessionStart/PreToolUse/Stop hooks sandbox each shard to its own slice and a read-only contract, and /shard-* commands diff a shard's surface against the contract and gate phases.",
-      "softwareVersion": "0.0.5",
+      "softwareVersion": "0.0.7",
       "license": "https://spdx.org/licenses/BUSL-1.1.html",
       "url": "https://github.com/robworks-code/sharding",
       "codeRepository": "https://github.com/robworks-code/sharding",
-      "downloadUrl": "https://github.com/robworks-code/sharding/releases/tag/v0.0.5",
+      "downloadUrl": "https://github.com/robworks-code/sharding/releases/tag/v0.0.7",
       "keywords": "claude-code, contract-first, isolation, spec-driven, monorepo, plugin",
+      "author": {
+        "@id": "https://robworks.info/#org"
+      },
+      "publisher": {
+        "@id": "https://robworks.info/#org"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://code.robworks.info/plugins/#sw-audacity",
+      "name": "audacity",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Claude Code plugin",
+      "operatingSystem": "macOS, Linux, Windows",
+      "description": "Drive Audacity from Claude Code - 132 tools plus one-call cleanup and mastering pipelines, with guided setup and diagnostics.",
+      "softwareVersion": "0.3.0",
+      "license": "https://spdx.org/licenses/Apache-2.0.html",
+      "url": "https://github.com/robworks-code/audacity-mcp-max",
+      "codeRepository": "https://github.com/robworks-code/audacity-mcp-max",
+      "downloadUrl": "https://github.com/robworks-code/audacity-mcp-max/releases/tag/v0.3.0",
+      "keywords": "audio, audacity, mastering, podcast, claude-code, plugin",
       "author": {
         "@id": "https://robworks.info/#org"
       },
@@ -517,7 +551,7 @@
           "name": "Are these plugins free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Free to install, and free to use as an individual — including for paid work. Most plugins here are MIT-licensed. The exception is sharding (BUSL-1.1): source-available rather than open source, free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license. Check the license on each card before adopting one at work. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you."
+            "text": "Free to install, and free to use as an individual — including for paid work. Most plugins here are MIT-licensed. audacity (Apache-2.0) is open source under a different license, with the same freedom to use at work. sharding (BUSL-1.1) is source-available rather than open source: free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license. Check the license on each card before adopting one at work. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you."
           }
         },
         {
@@ -564,7 +598,7 @@
       <p class="tagline" id="tagline">A personal catalog of MCP servers and developer-workflow plugins for Claude Code, by Ryan Robson and Robworks Software LLC.</p>
 
       <p class="hero-stats">
-        <span><strong id="hero-plugin-count">11</strong> plugins</span>
+        <span><strong id="hero-plugin-count">12</strong> plugins</span>
         <span class="sep" aria-hidden="true"> · </span>
         <span><strong>MIT</strong> + <strong>BUSL-1.1</strong></span>
         <span class="sep" aria-hidden="true"> · </span>
@@ -645,7 +679,7 @@
     <section id="plugins" aria-labelledby="plugins-heading">
       <div class="container">
         <h2 id="plugins-heading"><span class="section-num" aria-hidden="true">[02]  # </span>plugins</h2>
-        <p class="section-meta" id="plugin-count">11 plugins available</p>
+        <p class="section-meta" id="plugin-count">12 plugins available</p>
         <div id="plugins-grid" class="grid">
           <!-- BEGIN:PLUGIN-CARDS -->
           <article class="card" id="plugin-ga-mcp-full">
@@ -891,7 +925,7 @@
             </div>
             <p class="license">license: <a href="https://opensource.org/licenses/MIT">MIT</a></p>
             <div class="card-footer">
-              <span class="pinned">ref: <a href="https://github.com/Robworks-Code/notation/releases/tag/v0.6.0">v0.6.0</a></span>
+              <span class="pinned">ref: <a href="https://github.com/Robworks-Code/notation/releases/tag/v0.6.1">v0.6.1</a></span>
               <a class="repo-link" href="https://github.com/Robworks-Code/notation">source →</a>
             </div>
           </article>
@@ -984,8 +1018,37 @@
             </div>
             <p class="license">license: <a href="https://spdx.org/licenses/BUSL-1.1.html">BUSL-1.1</a> <span class="license-note">source-available</span></p>
             <div class="card-footer">
-              <span class="pinned">ref: <a href="https://github.com/robworks-code/sharding/releases/tag/v0.0.5">v0.0.5</a></span>
+              <span class="pinned">ref: <a href="https://github.com/robworks-code/sharding/releases/tag/v0.0.7">v0.0.7</a></span>
               <a class="repo-link" href="https://github.com/robworks-code/sharding">source →</a>
+            </div>
+          </article>
+
+          <article class="card" id="plugin-audacity">
+            <div class="card-header">
+              <h3>audacity</h3>
+              <span class="badge">developer-tools</span>
+            </div>
+            <p class="description">Drive Audacity from Claude Code - 132 tools plus one-call cleanup and mastering pipelines, with guided setup and diagnostics.</p>
+            <div class="tags">
+              <span class="tag">audio</span>
+              <span class="tag">audacity</span>
+              <span class="tag">mastering</span>
+              <span class="tag">podcast</span>
+            </div>
+            <div class="terminal">
+              <div class="terminal-body">
+                <div class="terminal-line">
+                  <code class="terminal-cmd">claude plugin install audacity@robworks-claude-code-plugins</code>
+                </div>
+                <div class="terminal-actions">
+                  <button class="copy-btn" data-copy="claude plugin install audacity@robworks-claude-code-plugins" aria-label="Copy install command for audacity">copy</button>
+                </div>
+              </div>
+            </div>
+            <p class="license">license: <a href="https://spdx.org/licenses/Apache-2.0.html">Apache-2.0</a></p>
+            <div class="card-footer">
+              <span class="pinned">ref: <a href="https://github.com/robworks-code/audacity-mcp-max/releases/tag/v0.3.0">v0.3.0</a></span>
+              <a class="repo-link" href="https://github.com/robworks-code/audacity-mcp-max">source →</a>
             </div>
           </article>
 <!-- END:PLUGIN-CARDS -->
@@ -1048,7 +1111,7 @@
         <details>
           <summary><span class="faq-num" aria-hidden="true">04</span>Are these plugins free?</summary>
           <!-- BEGIN:FAQ-LICENSE -->
-          <p>Free to install, and free to use as an individual — including for paid work. Most plugins here are MIT-licensed. The exception is sharding (BUSL-1.1): source-available rather than open source, free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license. Check the license on each card before adopting one at work. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you.</p>
+          <p>Free to install, and free to use as an individual — including for paid work. Most plugins here are MIT-licensed. audacity (Apache-2.0) is open source under a different license, with the same freedom to use at work. sharding (BUSL-1.1) is source-available rather than open source: free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license. Check the license on each card before adopting one at work. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you.</p>
 <!-- END:FAQ-LICENSE -->
         </details>
         <details>

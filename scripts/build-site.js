@@ -81,6 +81,37 @@ function nonMitPlugins(plugins) {
   return plugins.filter((p) => licenseId(p) && licenseId(p) !== "MIT");
 }
 
+/**
+ * OSI-approved licenses this catalog knows how to describe as open source.
+ *
+ * An allowlist rather than a denylist of the restricted ones: an unrecognised
+ * license defaults to the cautious description, which over-warns. Getting it
+ * the other way round would publish "open source, use it at work" about terms
+ * that say no such thing, which is the failure that matters.
+ */
+const OPEN_SOURCE_LICENSES = new Set([
+  "MIT",
+  "Apache-2.0",
+  "BSD-2-Clause",
+  "BSD-3-Clause",
+  "ISC",
+  "MPL-2.0",
+  "GPL-3.0",
+  "GPL-2.0",
+  "LGPL-3.0",
+  "AGPL-3.0",
+]);
+
+/** Non-MIT plugins that are still open source, in catalog order. */
+function otherOpenSourcePlugins(plugins) {
+  return nonMitPlugins(plugins).filter((p) => OPEN_SOURCE_LICENSES.has(licenseId(p)));
+}
+
+/** Plugins whose license is source-available rather than open source. */
+function restrictedPlugins(plugins) {
+  return nonMitPlugins(plugins).filter((p) => !OPEN_SOURCE_LICENSES.has(licenseId(p)));
+}
+
 /** The prose answer to "are these plugins free?", generated from the catalog. */
 function licensingAnswer(plugins) {
   const odd = nonMitPlugins(plugins);
@@ -89,13 +120,31 @@ function licensingAnswer(plugins) {
   if (odd.length === 0) {
     return `Yes. Every plugin is MIT-licensed and free to install and use. ${credentials}`;
   }
-  const names = odd.map((p) => `${p.name} (${licenseId(p)})`).join(", ");
-  return (
-    `Free to install, and free to use as an individual — including for paid work. ` +
-    `Most plugins here are MIT-licensed. The exception is ${names}: source-available rather than open source, ` +
-    `free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license. ` +
-    `Check the license on each card before adopting one at work. ${credentials}`
-  );
+  // Split by what the licenses actually say. This sentence used to describe
+  // every non-MIT plugin in BUSL's terms, because BUSL was the only one there
+  // was; the first Apache-2.0 plugin was then published as "source-available
+  // rather than open source ... requiring a commercial license", which is not
+  // what Apache-2.0 says and is not something to be wrong about in public.
+  const restricted = restrictedPlugins(plugins);
+  const otherOss = otherOpenSourcePlugins(plugins);
+  const list = (ps) => ps.map((p) => `${p.name} (${licenseId(p)})`).join(", ");
+  const parts = [
+    `Free to install, and free to use as an individual — including for paid work.`,
+    `Most plugins here are MIT-licensed.`,
+  ];
+  if (otherOss.length) {
+    parts.push(
+      `${list(otherOss)} ${otherOss.length === 1 ? "is" : "are"} open source under a different license, with the same freedom to use at work.`,
+    );
+  }
+  if (restricted.length) {
+    parts.push(
+      `${list(restricted)} ${restricted.length === 1 ? "is" : "are"} source-available rather than open source: ` +
+        `free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license.`,
+    );
+  }
+  parts.push(`Check the license on each card before adopting one at work.`, credentials);
+  return parts.join(" ");
 }
 
 /**
@@ -171,7 +220,12 @@ function renderPluginCard(plugin) {
     const licInner = licUrl
       ? `<a href="${escapeHtml(licUrl)}">${escapeHtml(lic)}</a>`
       : escapeHtml(lic);
-    const oss = lic === "MIT" ? "" : ` <span class="license-note">source-available</span>`;
+    // Only the genuinely restricted licenses get the badge. Tagging every
+    // non-MIT card "source-available" mislabelled Apache-2.0, which is OSI
+    // open source and carries no such restriction.
+    const oss = OPEN_SOURCE_LICENSES.has(lic)
+      ? ""
+      : ` <span class="license-note">source-available</span>`;
     lines.push(`            <p class="license">license: ${licInner}${oss}</p>`);
   }
   lines.push(`            <div class="card-footer">`);

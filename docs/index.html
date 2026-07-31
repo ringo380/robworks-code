@@ -335,14 +335,14 @@
               <h3>cpanel-mcp</h3>
               <span class="badge">infrastructure</span>
             </div>
-            <p class="description">cPanel UAPI MCP server — manage email, DNS, files, MySQL, SSL, cron, subdomains, backups, autoresponders, mail filters, and FTP on shared cPanel hosting. Multi-account profiles with atomic token rotation, dry-run auth_test, cPHulk lockout detection, and a state-machine /cpanel-mcp:setup.</p>
+            <p class="description">cPanel UAPI MCP server - 74 tools for email, DNS, file read and write, MySQL, FTP, SSL, cron, subdomains, addon domains, and backups on shared cPanel hosting. Multi-account profiles with atomic token rotation, dry-run auth_test, cPHulk lockout detection, POST routing that keeps secrets out of the cPanel access log, and a state-machine /cpanel-mcp:setup.</p>
             <div class="tags">
               <span class="tag">mcp</span>
               <span class="tag">cpanel</span>
               <span class="tag">hosting</span>
             </div>
             <div class="card-footer">
-              <span class="pinned">v0.4.0</span>
+              <span class="pinned">v0.4.4</span>
               <a class="repo-link" href="/plugins/#plugin-cpanel-mcp">view →</a>
             </div>
           </article>
@@ -369,14 +369,14 @@
               <h3>notation</h3>
               <span class="badge">productivity</span>
             </div>
-            <p class="description">Capture session learnings into the right Claude Code memory tier. /notation:notate reads the session first - classifying type, gauging volume, and identifying exercised tiers - then right-sizes the flow and announces the chosen shape before running it. Proposals are presented as a scorecard header plus per-tier tables with diffs below. Pass &#39;full&#39; to force the complete flow. /notation:notate-all applies every proposal without the picker. /notation:feedback sends a bug, idea, or routing correction to the maintainer as a support ticket. Notation is additive: it preserves existing lines and dates new entries rather than overwriting history. Ships a notation-audit skill with the same structured reporting.</p>
+            <p class="description">Capture session learnings into the right Claude Code memory tier instead of dumping them all into CLAUDE.md. /notation:notate reads the session, right-sizes the flow, and presents proposals as a scorecard plus per-tier tables with diffs; /notation:notate-all applies them without the picker; /notation:feedback sends a bug or routing correction to the maintainer. The bundled notation-audit skill keeps the global CLAUDE.md under its size budget, relocating detail into linked topical notes rather than deleting it. Project-scoped and global-scoped memory are kept independent: a learning that stops being true in another repo goes to that project&#39;s memory or docs, never into your global notes, and the audit reports the two scopes separately. Notation is additive: it preserves existing lines and dates new entries rather than overwriting history.</p>
             <div class="tags">
               <span class="tag">claude-md</span>
               <span class="tag">memory</span>
               <span class="tag">notes</span>
             </div>
             <div class="card-footer">
-              <span class="pinned">v0.6.1</span>
+              <span class="pinned">v0.10.0</span>
               <a class="repo-link" href="/plugins/#plugin-notation">view →</a>
             </div>
           </article>
@@ -420,14 +420,14 @@
               <h3>sharding</h3>
               <span class="badge">developer-tools</span>
             </div>
-            <p class="description">Develop a product as isolated shards coupled only through a frozen, versioned contract, with drift caught mechanically. A Claude Code plugin plus a deterministic engine: SessionStart/PreToolUse/Stop hooks sandbox each shard to its own slice and a read-only contract, and /shard-* commands diff a shard&#39;s surface against the contract and gate phases.</p>
+            <p class="description">Develop a product as isolated shards coupled only through a frozen, versioned contract, with drift caught mechanically. A Claude Code plugin plus a deterministic engine: SessionStart/PreToolUse/Stop hooks sandbox each shard to its own slice and a read-only contract, and /shard-* commands diff a shard&#39;s surface against the contract and gate phases. /shard-orchestrate plans the shards into dependency waves and can drive a real headless Claude Code session per shard, each confined to its own directory and a read-only contract, then re-reads every surface from disk to decide the verdict.</p>
             <div class="tags">
               <span class="tag">claude-code</span>
               <span class="tag">contract-first</span>
               <span class="tag">isolation</span>
             </div>
             <div class="card-footer">
-              <span class="pinned">v0.0.7</span>
+              <span class="pinned">v0.0.8</span>
               <a class="repo-link" href="/plugins/#plugin-sharding">view →</a>
             </div>
           </article>

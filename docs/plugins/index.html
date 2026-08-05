@@ -395,12 +395,12 @@
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "Claude Code plugin",
       "operatingSystem": "macOS, Linux, Windows",
-      "description": "Capture session learnings into the right Claude Code memory tier instead of dumping them all into CLAUDE.md. /notation:notate reads the session, right-sizes the flow, and presents proposals as a scorecard plus per-tier tables with diffs; /notation:notate-all applies them without the picker; /notation:feedback sends a bug or routing correction to the maintainer. The bundled notation-audit skill keeps the global CLAUDE.md under its size budget, relocating detail into linked topical notes rather than deleting it. Project-scoped and global-scoped memory are kept independent: a learning that stops being true in another repo goes to that project's memory or docs, never into your global notes, and the audit reports the two scopes separately. Notation is additive: it preserves existing lines and dates new entries rather than overwriting history.",
-      "softwareVersion": "0.10.0",
+      "description": "Capture session learnings into the right Claude Code memory tier instead of dumping them all into CLAUDE.md. /notation:notate reads the session, right-sizes the flow, and presents proposals as a scorecard plus per-tier tables with diffs; /notation:notate-all applies them without the picker; /notation:feedback sends a bug or routing correction to the maintainer. The bundled notation-audit skill keeps the global CLAUDE.md under its size budget, relocating detail into linked topical notes rather than deleting it. Project-scoped and global-scoped memory are kept independent: a learning that stops being true in another repo goes to that project's memory or docs, never into your global notes, and the audit reports the two scopes separately. Backups are sorted by kind rather than lumped together: a run's own rollback copies are offered for cleanup once its verification passed, while your own CLAUDE.md snapshot history is reported and left alone - and a rotation policy of your own always wins. Capture measures rather than guesses: every proposal is priced in characters before anything is written, a whole-run budget check catches additions that are each individually fine but collectively too large, and after the writes land it re-measures and reports any edit that did not land as drafted - telling that apart from a file another session changed underneath it. Notation is additive: it preserves existing lines and dates new entries rather than overwriting history.",
+      "softwareVersion": "0.12.0",
       "license": "https://opensource.org/licenses/MIT",
       "url": "https://github.com/Robworks-Code/notation",
       "codeRepository": "https://github.com/Robworks-Code/notation",
-      "downloadUrl": "https://github.com/Robworks-Code/notation/releases/tag/v0.10.0",
+      "downloadUrl": "https://github.com/Robworks-Code/notation/releases/tag/v0.12.0",
       "keywords": "claude-md, memory, notes, documentation, productivity, context-management, claude-code, plugin",
       "author": {
         "@id": "https://robworks.info/#org"
@@ -904,7 +904,7 @@
               <h3>notation</h3>
               <span class="badge">productivity</span>
             </div>
-            <p class="description">Capture session learnings into the right Claude Code memory tier instead of dumping them all into CLAUDE.md. /notation:notate reads the session, right-sizes the flow, and presents proposals as a scorecard plus per-tier tables with diffs; /notation:notate-all applies them without the picker; /notation:feedback sends a bug or routing correction to the maintainer. The bundled notation-audit skill keeps the global CLAUDE.md under its size budget, relocating detail into linked topical notes rather than deleting it. Project-scoped and global-scoped memory are kept independent: a learning that stops being true in another repo goes to that project&#39;s memory or docs, never into your global notes, and the audit reports the two scopes separately. Notation is additive: it preserves existing lines and dates new entries rather than overwriting history.</p>
+            <p class="description">Capture session learnings into the right Claude Code memory tier instead of dumping them all into CLAUDE.md. /notation:notate reads the session, right-sizes the flow, and presents proposals as a scorecard plus per-tier tables with diffs; /notation:notate-all applies them without the picker; /notation:feedback sends a bug or routing correction to the maintainer. The bundled notation-audit skill keeps the global CLAUDE.md under its size budget, relocating detail into linked topical notes rather than deleting it. Project-scoped and global-scoped memory are kept independent: a learning that stops being true in another repo goes to that project&#39;s memory or docs, never into your global notes, and the audit reports the two scopes separately. Backups are sorted by kind rather than lumped together: a run&#39;s own rollback copies are offered for cleanup once its verification passed, while your own CLAUDE.md snapshot history is reported and left alone - and a rotation policy of your own always wins. Capture measures rather than guesses: every proposal is priced in characters before anything is written, a whole-run budget check catches additions that are each individually fine but collectively too large, and after the writes land it re-measures and reports any edit that did not land as drafted - telling that apart from a file another session changed underneath it. Notation is additive: it preserves existing lines and dates new entries rather than overwriting history.</p>
             <div class="tags">
               <span class="tag">claude-md</span>
               <span class="tag">memory</span>
@@ -925,7 +925,7 @@
             </div>
             <p class="license">license: <a href="https://opensource.org/licenses/MIT">MIT</a></p>
             <div class="card-footer">
-              <span class="pinned">ref: <a href="https://github.com/Robworks-Code/notation/releases/tag/v0.10.0">v0.10.0</a></span>
+              <span class="pinned">ref: <a href="https://github.com/Robworks-Code/notation/releases/tag/v0.12.0">v0.12.0</a></span>
               <a class="repo-link" href="https://github.com/Robworks-Code/notation">source →</a>
             </div>
           </article>

@@ -129,7 +129,11 @@ function licensingAnswer(plugins) {
   const otherOss = otherOpenSourcePlugins(plugins);
   const list = (ps) => ps.map((p) => `${p.name} (${licenseId(p)})`).join(", ");
   const parts = [
-    `Free to install, and free to use as an individual — including for paid work.`,
+    // The "as an individual" hedge is only true while a restricted license is in
+    // the catalog. With every plugin open source, it understates the grant.
+    restricted.length
+      ? `Free to install, and free to use as an individual — including for paid work.`
+      : `Free to install and free to use, personally or commercially.`,
     `Most plugins here are MIT-licensed.`,
   ];
   if (otherOss.length) {

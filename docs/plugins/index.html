@@ -199,17 +199,17 @@
         {
           "@type": "ListItem",
           "position": 12,
-          "url": "https://code.robworks.info/plugins/#plugin-icloud-drive-mcp",
+          "url": "https://code.robworks.info/plugins/#plugin-audacity",
           "item": {
-            "@id": "https://code.robworks.info/plugins/#sw-icloud-drive-mcp"
+            "@id": "https://code.robworks.info/plugins/#sw-audacity"
           }
         },
         {
           "@type": "ListItem",
           "position": 13,
-          "url": "https://code.robworks.info/plugins/#plugin-audacity",
+          "url": "https://code.robworks.info/plugins/#plugin-icloud-mcp",
           "item": {
-            "@id": "https://code.robworks.info/plugins/#sw-audacity"
+            "@id": "https://code.robworks.info/plugins/#sw-icloud-mcp"
           }
         }
       ]
@@ -371,9 +371,9 @@
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "Claude Code plugin",
       "operatingSystem": "macOS, Linux, Windows",
-      "description": "Drive Ableton Live 11 and 12 from Claude Code - tracks, clips, MIDI notes, devices, mixer, automation, arrangement, scenes, transport, and preset generation (Wavetable, Simpler, rack macros & zones, and macro->parameter mappings) over a bundled MCP server. Includes a guided /ableton:setup, a /ableton:analyze best-practice set report, plus workflow commands for building and editing tracks.",
-      "softwareVersion": "0.34.0",
-      "license": "https://opensource.org/licenses/MIT",
+      "description": "Drive Ableton Live 11 and 12 from Claude Code on macOS and Windows - tracks, clips, MIDI notes, devices, mixer, automation, arrangement, scenes, transport, stem import, Ozone mastering, and preset generation (Wavetable, Simpler, rack macros & zones, and macro->parameter mappings) over a bundled MCP server. Includes a guided /ableton:setup, a /ableton:analyze best-practice set report, plus workflow commands for building and editing tracks.",
+      "softwareVersion": "0.35.0",
+      "license": "https://spdx.org/licenses/PolyForm-Noncommercial-1.0.0.html",
       "url": "https://github.com/ringo380/ableton-mcp-max",
       "codeRepository": "https://github.com/ringo380/ableton-mcp-max",
       "keywords": "mcp, ableton, ableton-live, music, daw, midi, audio, claude-code, plugin",
@@ -491,17 +491,17 @@
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://code.robworks.info/plugins/#sw-icloud-drive-mcp",
-      "name": "icloud-drive-mcp",
+      "@id": "https://code.robworks.info/plugins/#sw-audacity",
+      "name": "audacity",
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "Claude Code plugin",
-      "operatingSystem": "macOS",
-      "description": "MCP server for managing iCloud Drive files via the local sync folder: list, read, write, delete, move, and search files, plus file/dir info. Works on macOS and Windows.",
-      "softwareVersion": "1.1.0",
-      "license": "https://opensource.org/licenses/MIT",
-      "url": "https://github.com/robworks-code/icloud-drive-mcp",
-      "codeRepository": "https://github.com/robworks-code/icloud-drive-mcp",
-      "keywords": "mcp, icloud, icloud-drive, macos, files, claude-code, plugin",
+      "operatingSystem": "macOS, Linux, Windows",
+      "description": "Drive Audacity from Claude Code - 132 tools plus one-call cleanup and mastering pipelines, with guided setup and diagnostics.",
+      "softwareVersion": "0.3.0",
+      "license": "https://spdx.org/licenses/Apache-2.0.html",
+      "url": "https://github.com/robworks-code/audacity-mcp-max",
+      "codeRepository": "https://github.com/robworks-code/audacity-mcp-max",
+      "keywords": "audio, audacity, mastering, podcast, claude-code, plugin",
       "author": {
         "@id": "https://robworks.info/#org"
       },
@@ -516,17 +516,17 @@
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://code.robworks.info/plugins/#sw-audacity",
-      "name": "audacity",
+      "@id": "https://code.robworks.info/plugins/#sw-icloud-mcp",
+      "name": "icloud-mcp",
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "Claude Code plugin",
       "operatingSystem": "macOS, Linux, Windows",
-      "description": "Drive Audacity from Claude Code - 132 tools plus one-call cleanup and mastering pipelines, with guided setup and diagnostics.",
-      "softwareVersion": "0.3.0",
-      "license": "https://spdx.org/licenses/Apache-2.0.html",
-      "url": "https://github.com/robworks-code/audacity-mcp-max",
-      "codeRepository": "https://github.com/robworks-code/audacity-mcp-max",
-      "keywords": "audio, audacity, mastering, podcast, claude-code, plugin",
+      "description": "MCP server for iCloud Drive that works whether or not files are synced locally: list, search, read, download, upload, write, mkdir, rename, move, trash, and restore. iCloud is the source of truth; a hydrated local copy is used for reads when present. Needs uv and a one-time icloud-mcp login.",
+      "softwareVersion": "0.1.0",
+      "license": "https://opensource.org/licenses/MIT",
+      "url": "https://github.com/robworks-code/icloud-mcp",
+      "codeRepository": "https://github.com/robworks-code/icloud-mcp",
+      "keywords": "mcp, icloud, icloud-drive, pyicloud, files, claude-code, plugin",
       "author": {
         "@id": "https://robworks.info/#org"
       },
@@ -572,7 +572,7 @@
           "name": "Are these plugins free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Free to install and free to use, personally or commercially. Most plugins here are MIT-licensed. audacity (Apache-2.0) is open source under a different license, with the same freedom to use at work. Check the license on each card before adopting one at work. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you."
+            "text": "Free to install, and free to use as an individual — including for paid work. Most plugins here are MIT-licensed. audacity (Apache-2.0) is open source under a different license, with the same freedom to use at work. ableton (PolyForm-Noncommercial-1.0.0) is source-available rather than open source: free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license. Check the license on each card before adopting one at work. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you."
           }
         },
         {
@@ -893,7 +893,7 @@
               <h3>ableton</h3>
               <span class="badge">creative</span>
             </div>
-            <p class="description">Drive Ableton Live 11 and 12 from Claude Code - tracks, clips, MIDI notes, devices, mixer, automation, arrangement, scenes, transport, and preset generation (Wavetable, Simpler, rack macros &amp; zones, and macro-&gt;parameter mappings) over a bundled MCP server. Includes a guided /ableton:setup, a /ableton:analyze best-practice set report, plus workflow commands for building and editing tracks.</p>
+            <p class="description">Drive Ableton Live 11 and 12 from Claude Code on macOS and Windows - tracks, clips, MIDI notes, devices, mixer, automation, arrangement, scenes, transport, stem import, Ozone mastering, and preset generation (Wavetable, Simpler, rack macros &amp; zones, and macro-&gt;parameter mappings) over a bundled MCP server. Includes a guided /ableton:setup, a /ableton:analyze best-practice set report, plus workflow commands for building and editing tracks.</p>
             <div class="tags">
               <span class="tag">mcp</span>
               <span class="tag">ableton</span>
@@ -913,9 +913,9 @@
                 </div>
               </div>
             </div>
-            <p class="license">license: <a href="https://opensource.org/licenses/MIT">MIT</a></p>
+            <p class="license">license: <a href="https://spdx.org/licenses/PolyForm-Noncommercial-1.0.0.html">PolyForm-Noncommercial-1.0.0</a> <span class="license-note">source-available</span></p>
             <div class="card-footer">
-              <span class="pinned">ref: v0.34.0</span>
+              <span class="pinned">ref: v0.35.0</span>
               <a class="repo-link" href="https://github.com/ringo380/ableton-mcp-max">source →</a>
             </div>
           </article>
@@ -1044,36 +1044,6 @@
             </div>
           </article>
 
-          <article class="card" id="plugin-icloud-drive-mcp">
-            <div class="card-header">
-              <h3>icloud-drive-mcp</h3>
-              <span class="badge">productivity</span>
-            </div>
-            <p class="description">MCP server for managing iCloud Drive files via the local sync folder: list, read, write, delete, move, and search files, plus file/dir info. Works on macOS and Windows.</p>
-            <div class="tags">
-              <span class="tag">mcp</span>
-              <span class="tag">icloud</span>
-              <span class="tag">icloud-drive</span>
-              <span class="tag">macos</span>
-              <span class="tag">files</span>
-            </div>
-            <div class="terminal">
-              <div class="terminal-body">
-                <div class="terminal-line">
-                  <code class="terminal-cmd">claude plugin install icloud-drive-mcp@robworks-claude-code-plugins</code>
-                </div>
-                <div class="terminal-actions">
-                  <button class="copy-btn" data-copy="claude plugin install icloud-drive-mcp@robworks-claude-code-plugins" aria-label="Copy install command for icloud-drive-mcp">copy</button>
-                </div>
-              </div>
-            </div>
-            <p class="license">license: <a href="https://opensource.org/licenses/MIT">MIT</a></p>
-            <div class="card-footer">
-              <span class="pinned">ref: v1.1.0</span>
-              <a class="repo-link" href="https://github.com/robworks-code/icloud-drive-mcp">source →</a>
-            </div>
-          </article>
-
           <article class="card" id="plugin-audacity">
             <div class="card-header">
               <h3>audacity</h3>
@@ -1100,6 +1070,36 @@
             <div class="card-footer">
               <span class="pinned">ref: v0.3.0</span>
               <a class="repo-link" href="https://github.com/robworks-code/audacity-mcp-max">source →</a>
+            </div>
+          </article>
+
+          <article class="card" id="plugin-icloud-mcp">
+            <div class="card-header">
+              <h3>icloud-mcp</h3>
+              <span class="badge">productivity</span>
+            </div>
+            <p class="description">MCP server for iCloud Drive that works whether or not files are synced locally: list, search, read, download, upload, write, mkdir, rename, move, trash, and restore. iCloud is the source of truth; a hydrated local copy is used for reads when present. Needs uv and a one-time icloud-mcp login.</p>
+            <div class="tags">
+              <span class="tag">mcp</span>
+              <span class="tag">icloud</span>
+              <span class="tag">icloud-drive</span>
+              <span class="tag">pyicloud</span>
+              <span class="tag">files</span>
+            </div>
+            <div class="terminal">
+              <div class="terminal-body">
+                <div class="terminal-line">
+                  <code class="terminal-cmd">claude plugin install icloud-mcp@robworks-claude-code-plugins</code>
+                </div>
+                <div class="terminal-actions">
+                  <button class="copy-btn" data-copy="claude plugin install icloud-mcp@robworks-claude-code-plugins" aria-label="Copy install command for icloud-mcp">copy</button>
+                </div>
+              </div>
+            </div>
+            <p class="license">license: <a href="https://opensource.org/licenses/MIT">MIT</a></p>
+            <div class="card-footer">
+              <span class="pinned">ref: v0.1.0</span>
+              <a class="repo-link" href="https://github.com/robworks-code/icloud-mcp">source →</a>
             </div>
           </article>
 <!-- END:PLUGIN-CARDS -->
@@ -1160,7 +1160,7 @@
         <details>
           <summary><span class="faq-num" aria-hidden="true">04</span>Are these plugins free?</summary>
           <!-- BEGIN:FAQ-LICENSE -->
-          <p>Free to install and free to use, personally or commercially. Most plugins here are MIT-licensed. audacity (Apache-2.0) is open source under a different license, with the same freedom to use at work. Check the license on each card before adopting one at work. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you.</p>
+          <p>Free to install, and free to use as an individual — including for paid work. Most plugins here are MIT-licensed. audacity (Apache-2.0) is open source under a different license, with the same freedom to use at work. ableton (PolyForm-Noncommercial-1.0.0) is source-available rather than open source: free for any individual acting on their own initiative, with adoption across an organization requiring a commercial license. Check the license on each card before adopting one at work. Some need third-party credentials (a Namecheap API key, a Google Analytics property, a QuikGIF license) that you configure separately — the plugin never charges you.</p>
 <!-- END:FAQ-LICENSE -->
         </details>
         <details>
